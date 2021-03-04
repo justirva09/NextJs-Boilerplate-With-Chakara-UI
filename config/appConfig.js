@@ -6,9 +6,9 @@ const config = {
     appCredit: 'justirva09',
     appDesc: '',
     url: {
-      api: '',
-      assets: '',
-      origin: ''
+      api: 'https://example-url-api.com/api',
+      assets: 'https://example-url-api.com/assets',
+      origin: 'https://example-url-api.com'
     },
     firebase: {
       apiKey: '',
