@@ -1,7 +1,36 @@
+import App from 'next/app';
 import '../styles/globals.css'
+import { React, createWrapper, Provider } from 'libraries';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { store } from 'modules';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const theme = extendTheme({})
+
+class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    return {
+      pageProps: {
+        // Call page-level getInitialProps
+        ...(Component.getInitialProps
+          ? await Component.getInitialProps(ctx)
+          : {})
+      }
+    };
+  }
+
+  render() {
+    const {Component, pageProps} = this.props;
+    return(
+      <Provider store={store}>
+        <ChakraProvider theme={theme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </Provider>
+    )
+  }
 }
 
-export default MyApp
+const makeStore = () => store;
+const wrapper = createWrapper(makeStore);
+
+export default wrapper.withRedux(MyApp)
