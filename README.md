@@ -18,7 +18,8 @@ yarn start
 2.  Import with Absolute path (e.g: import { React, Component } from 'libraries').
 3.  Already integrated with Next-Redux-Wrapper.
 4.  Already integrated with API instance Axios.
-5.  Easy to use!
+5.  Already integrated with Chakra-ui
+6.  Easy to use!
 
 
 ## How to Contribute
